@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher</title>
+</head>
+<body>
+    <button onclick="switchTheme('dark')">Dark Mode</button>
+    <button onclick="switchTheme('light')">Light Mode</button>
+
+    <script>
+        function switchTheme(mode) {
+            if (mode === 'dark') {
+                document.body.style.backgroundColor = 'black';
+                document.body.style.color = 'white';
+                document.body.style.fontSize = '18px';
+            } else {
+                document.body.style.backgroundColor = 'white';
+                document.body.style.color = 'black';
+                document.body.style.fontSize = '16px';
+            }
+        }
+    </script>
+</body>
+</html>
