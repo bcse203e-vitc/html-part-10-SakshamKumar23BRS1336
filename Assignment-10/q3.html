@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Order Form</title>
+</head>
+<body>
+    <h1>Pizza Order</h1>
+    <form id="pizzaForm">
+        <fieldset>
+            <legend>Select Pizza Size</legend>
+            <label>
+                <input type="radio" name="size" value="Small"> Small
+            </label>
+            <label>
+                <input type="radio" name="size" value="Medium"> Medium
+            </label>
+            <label>
+                <input type="radio" name="size" value="Large"> Large
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Select Toppings</legend>
+            <label>
+                <input type="checkbox" name="toppings" value="Cheese"> Cheese
+            </label>
+            <label>
+                <input type="checkbox" name="toppings" value="Pepperoni"> Pepperoni
+            </label>
+            <label>
+                <input type="checkbox" name="toppings" value="Mushrooms"> Mushrooms
+            </label>
+            <label>
+                <input type="checkbox" name="toppings" value="Olives"> Olives
+            </label>
+        </fieldset>
+
+        <button type="button" onclick="submitOrder()">Submit Order</button>
+    </form>
+
+    <h2>Order Summary</h2>
+    <p id="orderSummary"></p>
+
+    <script>
+        function submitOrder() {
+            let form = document.forms['pizzaForm'];
+            let size = form['size'] ? form['size'].value : null; // Get selected pizza size
+            let toppings = [];
+            let selectedToppings = form.querySelectorAll('input[name="toppings"]:checked');
+            selectedToppings.forEach(topping => toppings.push(topping.value));
+
+            if (!size) {
+                alert('Please select a pizza size.');
+                return;
+            }
+
+            // Build the order summary
+            let summary = `You ordered a ${size} pizza with the following toppings: `;
+            if (toppings.length === 0) {
+                summary += "No toppings selected.";
+            } else {
+                summary += toppings.join(', ');
+            }
+
+            document.getElementById('orderSummary').textContent = summary;
+        }
+    </script>
+</body>
+</html>
